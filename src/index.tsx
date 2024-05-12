@@ -1,6 +1,7 @@
-import {Text, View} from 'react-native';
-import {localizationInit, useLocalization} from './hooks/localization.ts';
-import {useEffect, useState} from 'react';
+import {localizationInit} from './hooks/localization.ts';
+import React, {useEffect, useState} from 'react';
+import {store} from './store';
+import {Provider} from 'react-redux';
 
 export function App() {
   const [isI18nLoad, setIsI18nLoad] = useState(false);
@@ -18,5 +19,9 @@ export function App() {
     return null;
   }
 
-  return <View></View>;
+  return (
+    <Provider store={store}>
+      <App />
+    </Provider>
+  );
 }
