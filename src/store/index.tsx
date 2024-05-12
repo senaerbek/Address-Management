@@ -1,7 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
+import addressSlice from './address/addressSlice.ts';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: {
+    addresses: addressSlice,
+  },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
