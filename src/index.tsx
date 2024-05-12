@@ -2,6 +2,10 @@ import {localizationInit} from './hooks/localization.ts';
 import React, {useEffect, useState} from 'react';
 import {store} from './store';
 import {Provider} from 'react-redux';
+import {AppNavigator} from './navigation/app-navigation.tsx';
+import {NavigationContainer} from '@react-navigation/native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import 'react-native-gesture-handler';
 
 export function App() {
   const [isI18nLoad, setIsI18nLoad] = useState(false);
@@ -21,7 +25,11 @@ export function App() {
 
   return (
     <Provider store={store}>
-      <App />
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <AppNavigator />
+        </NavigationContainer>
+      </SafeAreaProvider>
     </Provider>
   );
 }
