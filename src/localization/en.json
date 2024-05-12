@@ -1,5 +1,8 @@
 {
   "translation": {
-    "title": "tzczxcitle"
+    "HOME_SCREEN": {
+      "MY_ADDRESSES": "My Addresses",
+      "YOUR_ADDRESS_INFO": "Address Info"
+    }
   }
 }

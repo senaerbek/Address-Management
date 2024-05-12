@@ -1,5 +1,8 @@
 {
   "translation": {
-    "title": "baslik"
+    "HOME_SCREEN": {
+      "MY_ADDRESSES": "Adreslerim",
+      "YOUR_ADDRESS_INFO": "Adres bilgilerin"
+    }
   }
 }
