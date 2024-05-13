@@ -5,7 +5,7 @@ import {getAddresses} from '../../api/services/address-service.ts';
 const addressSlice = createSlice({
   name: 'address',
   initialState: {
-    address: {} as Address,
+    addresses: [] as Address[],
     loading: false,
     error: null,
   },
@@ -15,7 +15,7 @@ const addressSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(getAddresses.fulfilled, (state, action) => {
-      state.address = action.payload;
+      state.addresses = action.payload;
       state.loading = false;
     });
     builder.addCase(getAddresses.rejected, state => {
