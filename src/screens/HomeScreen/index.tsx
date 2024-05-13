@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {HeaderComponent} from '../../components/HeaderComponent';
 import {styles} from './style.ts';
@@ -9,12 +9,18 @@ import {getAddresses} from '../../api/services/address-service.ts';
 import {AddressTableComponent} from '../../components/AddressTableComponent';
 import {ButtonComponent} from '../../components/ButtonComponent';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {useNavigation} from '@react-navigation/native';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
+  const navigation = useNavigation();
   const {bottom} = useSafeAreaInsets();
   const {t} = useLocalization();
   const {addresses} = useSelector((state: RootState) => state.addresses);
+
+  const navigateToAddAddressScreen = useCallback(() => {
+    navigation.navigate('AddAddress');
+  }, []);
 
   useEffect(() => {
     dispatch(getAddresses());
@@ -40,7 +46,10 @@ export function HomeScreen() {
             marginBottom: bottom,
           },
         ]}>
-        <ButtonComponent title={t('HOME_SCREEN.ADD_NEW_ADDRESS')} />
+        <ButtonComponent
+          title={t('HOME_SCREEN.ADD_NEW_ADDRESS')}
+          onPress={navigateToAddAddressScreen}
+        />
       </View>
     </View>
   );
