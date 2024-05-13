@@ -3,6 +3,9 @@
     "HOME_SCREEN": {
       "MY_ADDRESSES": "My Addresses",
       "YOUR_ADDRESS_INFO": "Address Info"
+    },
+    "ADDRESS_TABLE": {
+      "TITLE": "Registered Addresses",
     }
   }
 }

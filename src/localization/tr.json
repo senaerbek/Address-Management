@@ -3,6 +3,9 @@
     "HOME_SCREEN": {
       "MY_ADDRESSES": "Adreslerim",
       "YOUR_ADDRESS_INFO": "Adres bilgilerin"
+    },
+    "ADDRESS_TABLE": {
+      "TITLE": "Kayıtlı Adresler"
     }
   }
 }
