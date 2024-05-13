@@ -2,7 +2,8 @@
   "translation": {
     "HOME_SCREEN": {
       "MY_ADDRESSES": "Adreslerim",
-      "YOUR_ADDRESS_INFO": "Adres bilgilerin"
+      "YOUR_ADDRESS_INFO": "Adres bilgilerin",
+      "ADD_NEW_ADDRESS": "Yeni Adres Ekle",
     },
     "ADDRESS_TABLE": {
       "TITLE": "Kayıtlı Adresler"

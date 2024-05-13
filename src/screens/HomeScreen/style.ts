@@ -6,4 +6,14 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     color: '#ffffff',
   },
+  container: {
+    flex: 1,
+  },
+  body: {
+    flex: 1,
+    marginHorizontal: 20,
+  },
+  buttonContainer: {
+    marginHorizontal: 20,
+  },
 });

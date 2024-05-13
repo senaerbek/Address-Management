@@ -2,10 +2,11 @@
   "translation": {
     "HOME_SCREEN": {
       "MY_ADDRESSES": "My Addresses",
-      "YOUR_ADDRESS_INFO": "Address Info"
+      "YOUR_ADDRESS_INFO": "Address Info",
+      "ADD_NEW_ADDRESS": "Add New Address"
     },
     "ADDRESS_TABLE": {
-      "TITLE": "Registered Addresses",
+      "TITLE": "Registered Addresses"
     }
   }
 }
