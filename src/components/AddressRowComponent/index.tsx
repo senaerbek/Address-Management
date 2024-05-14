@@ -18,7 +18,9 @@ export function AddressRowComponent(props: AddressRowComponentProps) {
         </View>
       </View>
       <View style={styles.infoContainer}>
-        <Text style={styles.infoTitle}>{address.title}</Text>
+        <Text style={styles.infoTitle} numberOfLines={2}>
+          {address.title}
+        </Text>
         <Text style={styles.infoDetail} numberOfLines={1}>
           {address.detail}
         </Text>

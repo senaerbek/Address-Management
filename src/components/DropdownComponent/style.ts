@@ -18,4 +18,9 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     color: '#6F6085',
   },
+  error: {
+    color: 'red',
+    fontSize: 12,
+    marginTop: 4,
+  },
 });

@@ -5,16 +5,19 @@ import {
   Animated,
   Easing,
   TouchableWithoutFeedback,
+  TextInputProps,
+  Text,
 } from 'react-native';
 import {styles} from './style.ts';
 
-interface TextInputComponentProps {
+interface TextInputComponentProps extends TextInputProps {
   label: string;
   style?: any;
+  error?: string;
 }
 
 export function TextInputComponent(props: TextInputComponentProps) {
-  const {label, style, ...restOfProps} = props;
+  const {label, style, error, ...restOfProps} = props;
   const inputRef = useRef<TextInput>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -76,7 +79,7 @@ export function TextInputComponent(props: TextInputComponentProps) {
       <TextInput
         style={styles.input}
         ref={inputRef}
-        onChangeText={setValue}
+        onChange={e => setValue(e.nativeEvent.text)}
         value={value}
         onBlur={() => {
           setIsFocused(false);
@@ -116,6 +119,7 @@ export function TextInputComponent(props: TextInputComponentProps) {
           </Animated.Text>
         </Animated.View>
       </TouchableWithoutFeedback>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
     </View>
   );
 }

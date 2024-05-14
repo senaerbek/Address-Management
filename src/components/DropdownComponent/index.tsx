@@ -12,7 +12,7 @@ import {Dropdown} from 'react-native-element-dropdown';
 import {DropdownProps} from 'react-native-element-dropdown/lib/typescript/components/Dropdown/model';
 import {styles} from './style.ts';
 
-interface DropdownItem {
+export interface DropdownItem {
   label: string;
   value: string;
 }
@@ -21,10 +21,11 @@ interface DropdownComponentProps<T> extends DropdownProps<T> {
   label: string;
   onChange: (item: T) => void;
   style?: any;
+  error?: string;
 }
 
 export function DropdownComponent<T>(props: DropdownComponentProps<T>) {
-  const {label, style, onChange, ...restOfProps} = props;
+  const {label, style, error, onChange, ...restOfProps} = props;
   const [value, setValue] = useState<DropdownItem | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -127,6 +128,7 @@ export function DropdownComponent<T>(props: DropdownComponentProps<T>) {
           </Animated.Text>
         </Animated.View>
       </TouchableWithoutFeedback>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
     </View>
   );
 }
