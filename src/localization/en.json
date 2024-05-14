@@ -17,6 +17,9 @@
       "ADDRESS_INPUT_REQUIRED": "Address title is required",
       "CITY_INPUT_REQUIRED": "City is required",
       "DETAIL_INPUT_REQUIRED": "Address detail is required"
+    },
+    "SUCCESS_MODAL": {
+      "MESSAGE": "Address has been saved successfully!"
     }
   }
 }

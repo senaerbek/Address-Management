@@ -16,6 +16,9 @@
       "ADDRESS_INPUT_REQUIRED": "Adres başlığı zorunludur.",
       "CITY_INPUT_REQUIRED": "Şehir zorunludur.",
       "DETAIL_INPUT_REQUIRED": "Adres detayı zorunludur."
+    },
+    "SUCCESS_MODAL": {
+      "MESSAGE": "Adresin başarıyla kaydedildi!"
     }
   }
 }
