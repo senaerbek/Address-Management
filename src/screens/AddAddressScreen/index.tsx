@@ -106,21 +106,21 @@ export function AddAddressScreen() {
               />
               <TextInputComponent
                 style={styles.inputContainer}
-                label={t('ADD_ADDRESS_SCREEN.CITY_INPUT')}
-                onChangeText={handleChange('city')}
-                error={errors.city && touched.city ? errors.city : undefined}
-              />
-              <DropdownComponent
                 label={t('ADD_ADDRESS_SCREEN.DETAIL_INPUT')}
-                data={citiesForDropdown}
-                onChange={({value}: DropdownItem) => {
-                  setFieldValue('detail', value);
-                }}
-                labelField={'label'}
-                valueField={'value'}
+                onChangeText={handleChange('detail')}
                 error={
                   errors.detail && touched.detail ? errors.detail : undefined
                 }
+              />
+              <DropdownComponent
+                label={t('ADD_ADDRESS_SCREEN.CITY_INPUT')}
+                data={citiesForDropdown}
+                onChange={({value}: DropdownItem) => {
+                  setFieldValue('city', value);
+                }}
+                labelField={'label'}
+                valueField={'value'}
+                error={errors.city && touched.city ? errors.city : undefined}
               />
             </ScrollView>
             <DividerComponent />
