@@ -17,12 +17,13 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Formik} from 'formik';
 import {Address} from '../../models/address.ts';
 import * as Yup from 'yup';
-import {BottomModal} from '../../components/BottomModal';
 import {SuccessBottomModal} from '../../components/SuccessBottomModal';
+import {useNavigation} from '@react-navigation/native';
 
 export function AddAddressScreen() {
   const {t} = useLocalization();
   const dispatch = useDispatch<AppDispatch>();
+  const navigation = useNavigation();
   const {bottom} = useSafeAreaInsets();
   const cities = useSelector((state: RootState) => state.cities.cities);
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -55,11 +56,14 @@ export function AddAddressScreen() {
   }, []);
 
   useEffect(() => {
-    if (isModalVisible) {
-      setTimeout(() => {
-        setIsModalVisible(false);
-      }, 5000);
-    }
+    const handleModal = async () => {
+      if (isModalVisible) {
+        await new Promise(resolve => setTimeout(resolve, 5000));
+        navigation.goBack();
+      }
+    };
+
+    handleModal();
   }, [isModalVisible]);
 
   useEffect(() => {
@@ -76,7 +80,6 @@ export function AddAddressScreen() {
           handleChange,
           handleSubmit,
           setFieldValue,
-          isValid,
           dirty,
           isSubmitting,
           errors,
