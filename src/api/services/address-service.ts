@@ -5,7 +5,7 @@ import {Address} from '../../models/address.ts';
 export const getAddresses = createAsyncThunk(
   'addresses/fetchAddresses',
   async () => {
-    const response = await fetch(`${baseUrl}/addresses`);
+    const response = await fetch(`${baseUrl}/addressList`);
     return await response.json();
   },
 );
@@ -13,7 +13,7 @@ export const getAddresses = createAsyncThunk(
 export const addAddress = createAsyncThunk(
   'addresses/addAddress',
   async (address: Partial<Address>) => {
-    const response = await fetch(`${baseUrl}/addresses`, {
+    const response = await fetch(`${baseUrl}/addressList`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
