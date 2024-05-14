@@ -1,19 +1,34 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, TouchableOpacityProps} from 'react-native';
 import {styles} from './style.ts';
 
-interface ButtonComponentProps {
+interface ButtonComponentProps extends TouchableOpacityProps {
   title: string;
   onPress?: () => void;
   style?: any;
+  disabled?: boolean;
 }
 
 export function ButtonComponent(props: ButtonComponentProps) {
-  const {title, style, onPress} = props;
+  const {title, style, onPress, disabled, ...other} = props;
 
   return (
-    <TouchableOpacity style={[styles.button, style]} onPress={onPress}>
-      <Text style={styles.buttonText}>{title}</Text>
+    <TouchableOpacity
+      {...other}
+      style={[
+        styles.button,
+        style,
+        disabled ? styles.disabledButton : undefined,
+      ]}
+      disabled={disabled}
+      onPress={onPress}>
+      <Text
+        style={[
+          styles.buttonText,
+          disabled ? styles.disabledButtonText : undefined,
+        ]}>
+        {title}
+      </Text>
     </TouchableOpacity>
   );
 }

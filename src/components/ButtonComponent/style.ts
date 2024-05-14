@@ -9,9 +9,15 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  disabledButton: {
+    backgroundColor: '#EEF0F4',
+  },
   buttonText: {
     color: 'white',
     fontSize: 16,
     fontWeight: '500',
+  },
+  disabledButtonText: {
+    color: '#AAB5C1',
   },
 });
