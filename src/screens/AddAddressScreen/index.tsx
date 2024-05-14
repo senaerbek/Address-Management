@@ -1,5 +1,5 @@
 import {ScrollView, Text, View} from 'react-native';
-import React, {useCallback, useEffect, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {styles} from './style';
 import {HeaderComponent} from '../../components/HeaderComponent';
 import {useLocalization} from '../../hooks/localization';
@@ -17,12 +17,15 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {Formik} from 'formik';
 import {Address} from '../../models/address.ts';
 import * as Yup from 'yup';
+import {BottomModal} from '../../components/BottomModal';
+import {SuccessBottomModal} from '../../components/SuccessBottomModal';
 
 export function AddAddressScreen() {
   const {t} = useLocalization();
   const dispatch = useDispatch<AppDispatch>();
   const {bottom} = useSafeAreaInsets();
   const cities = useSelector((state: RootState) => state.cities.cities);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const validationSchema = useMemo(() => {
     return Yup.object().shape({
@@ -46,8 +49,18 @@ export function AddAddressScreen() {
   }, [cities]);
 
   const onSavePressed = useCallback((values: Partial<Address>) => {
-    dispatch(addAddress(values));
+    dispatch(addAddress(values)).then(() => {
+      setIsModalVisible(true);
+    });
   }, []);
+
+  useEffect(() => {
+    if (isModalVisible) {
+      setTimeout(() => {
+        setIsModalVisible(false);
+      }, 5000);
+    }
+  }, [isModalVisible]);
 
   useEffect(() => {
     dispatch(getCities());
@@ -123,6 +136,10 @@ export function AddAddressScreen() {
           </>
         )}
       </Formik>
+      <SuccessBottomModal
+        isVisible={isModalVisible}
+        setIsVisible={setIsModalVisible}
+      />
     </View>
   );
 }
