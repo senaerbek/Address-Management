@@ -7,6 +7,13 @@
     },
     "ADDRESS_TABLE": {
       "TITLE": "Registered Addresses"
+
+    },
+    "ADD_ADDRESS_SCREEN": {
+      "ADDRESS_INPUT": "Address title",
+      "CITY_INPUT": "City",
+      "DETAIL_INPUT": "Address Detail",
+      "SAVE_BUTTON": "Save"
     }
   }
 }

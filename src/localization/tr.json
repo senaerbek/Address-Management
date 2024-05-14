@@ -7,6 +7,12 @@
     },
     "ADDRESS_TABLE": {
       "TITLE": "Kayıtlı Adresler"
+    },
+    "ADD_ADDRESS_SCREEN": {
+      "ADDRESS_INPUT": "Adres Başlığı",
+      "CITY_INPUT": "Şehir",
+      "DETAIL_INPUT": "Adres Detayı",
+      "SAVE_BUTTON": "Kaydet"
     }
   }
 }
