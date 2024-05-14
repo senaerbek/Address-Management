@@ -1,4 +1,4 @@
-import {ScrollView, Text, View} from 'react-native';
+import {ActivityIndicator, ScrollView, Text, View} from 'react-native';
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {styles} from './style';
 import {HeaderComponent} from '../../components/HeaderComponent';
@@ -20,13 +20,14 @@ import * as Yup from 'yup';
 import {SuccessBottomModal} from '../../components/SuccessBottomModal';
 import {useNavigation} from '@react-navigation/native';
 import {DividerComponent} from '../../components/DividerComponent';
+import {ActivityIndicatorComponent} from '../../components/ActivityIndicatorComponent';
 
 export function AddAddressScreen() {
   const {t} = useLocalization();
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation();
   const {bottom} = useSafeAreaInsets();
-  const cities = useSelector((state: RootState) => state.cities.cities);
+  const {cities, loading} = useSelector((state: RootState) => state.cities);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const validationSchema = useMemo(() => {
@@ -95,48 +96,60 @@ export function AddAddressScreen() {
                 </Text>
               }
             />
-            <ScrollView
-              style={styles.body}
-              showsVerticalScrollIndicator={false}>
-              <TextInputComponent
-                style={styles.inputContainer}
-                label={t('ADD_ADDRESS_SCREEN.ADDRESS_INPUT')}
-                onChangeText={handleChange('title')}
-                error={errors.title && touched.title ? errors.title : undefined}
-              />
-              <TextInputComponent
-                style={styles.inputContainer}
-                label={t('ADD_ADDRESS_SCREEN.DETAIL_INPUT')}
-                onChangeText={handleChange('detail')}
-                error={
-                  errors.detail && touched.detail ? errors.detail : undefined
-                }
-              />
-              <DropdownComponent
-                label={t('ADD_ADDRESS_SCREEN.CITY_INPUT')}
-                data={citiesForDropdown}
-                onChange={({value}: DropdownItem) => {
-                  setFieldValue('city', value);
-                }}
-                labelField={'label'}
-                valueField={'value'}
-                error={errors.city && touched.city ? errors.city : undefined}
-              />
-            </ScrollView>
-            <DividerComponent />
-            <ButtonComponent
-              disabled={!dirty || isSubmitting}
-              style={[
-                styles.buttonContainer,
-                {
-                  marginBottom: bottom,
-                },
-              ]}
-              title={t('ADD_ADDRESS_SCREEN.SAVE_BUTTON')}
-              onPress={() => {
-                handleSubmit();
-              }}
-            />
+            {loading ? (
+              <ActivityIndicatorComponent />
+            ) : (
+              <>
+                <ScrollView
+                  style={styles.body}
+                  showsVerticalScrollIndicator={false}>
+                  <TextInputComponent
+                    style={styles.inputContainer}
+                    label={t('ADD_ADDRESS_SCREEN.ADDRESS_INPUT')}
+                    onChangeText={handleChange('title')}
+                    error={
+                      errors.title && touched.title ? errors.title : undefined
+                    }
+                  />
+                  <TextInputComponent
+                    style={styles.inputContainer}
+                    label={t('ADD_ADDRESS_SCREEN.DETAIL_INPUT')}
+                    onChangeText={handleChange('detail')}
+                    error={
+                      errors.detail && touched.detail
+                        ? errors.detail
+                        : undefined
+                    }
+                  />
+                  <DropdownComponent
+                    label={t('ADD_ADDRESS_SCREEN.CITY_INPUT')}
+                    data={citiesForDropdown}
+                    onChange={({value}: DropdownItem) => {
+                      setFieldValue('city', value);
+                    }}
+                    labelField={'label'}
+                    valueField={'value'}
+                    error={
+                      errors.city && touched.city ? errors.city : undefined
+                    }
+                  />
+                </ScrollView>
+                <DividerComponent />
+                <ButtonComponent
+                  disabled={!dirty || isSubmitting}
+                  style={[
+                    styles.buttonContainer,
+                    {
+                      marginBottom: bottom,
+                    },
+                  ]}
+                  title={t('ADD_ADDRESS_SCREEN.SAVE_BUTTON')}
+                  onPress={() => {
+                    handleSubmit();
+                  }}
+                />
+              </>
+            )}
           </>
         )}
       </Formik>

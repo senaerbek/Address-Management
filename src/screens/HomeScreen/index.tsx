@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect} from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {ActivityIndicator, Text, TouchableOpacity, View} from 'react-native';
 import {HeaderComponent} from '../../components/HeaderComponent';
 import {styles} from './style.ts';
 import {useLocalization} from '../../hooks/localization.ts';
@@ -13,13 +13,16 @@ import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {StackParamList} from '../../navigation/app-navigation.tsx';
 import {DividerComponent} from '../../components/DividerComponent';
+import {ActivityIndicatorComponent} from '../../components/ActivityIndicatorComponent';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
   const navigation = useNavigation<StackNavigationProp<StackParamList>>();
   const {bottom} = useSafeAreaInsets();
   const {t} = useLocalization();
-  const {addresses} = useSelector((state: RootState) => state.addresses);
+  const {addresses, loading} = useSelector(
+    (state: RootState) => state.addresses,
+  );
 
   const navigateToAddAddressScreen = useCallback(() => {
     navigation.navigate('AddAddress');
@@ -46,7 +49,11 @@ export function HomeScreen() {
             marginBottom: bottom,
           },
         ]}>
-        <AddressTableComponent addressList={addresses} />
+        {loading ? (
+          <ActivityIndicatorComponent />
+        ) : (
+          <AddressTableComponent addressList={addresses} />
+        )}
       </View>
       <DividerComponent />
       <View
