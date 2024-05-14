@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
   },
   iconView: {
     flex: 1,
+    alignItems: 'flex-start',
   },
   titleView: {
     flex: 2,
@@ -32,10 +33,15 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
   },
+  languageIconView: {
+    flex: 1,
+    alignItems: 'flex-end',
+  },
   iconStyle: {
     width: 10,
     height: 10,
     fill: '#C2BBCF',
     stroke: '#C2BBCF',
+    strokeWidth: 1.66667,
   },
 });
