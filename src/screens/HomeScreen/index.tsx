@@ -12,6 +12,7 @@ import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {StackParamList} from '../../navigation/app-navigation.tsx';
+import {DividerComponent} from '../../components/DividerComponent';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
@@ -47,7 +48,7 @@ export function HomeScreen() {
         ]}>
         <AddressTableComponent addressList={addresses} />
       </View>
-      <View style={styles.divider} />
+      <DividerComponent />
       <View
         style={[
           styles.buttonContainer,

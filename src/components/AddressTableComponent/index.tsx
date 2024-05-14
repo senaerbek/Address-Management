@@ -4,6 +4,7 @@ import {AddressRowComponent} from '../AddressRowComponent';
 import {Address} from '../../models/address.ts';
 import {styles} from './style.ts';
 import {useLocalization} from '../../hooks/localization.ts';
+import {DividerComponent} from '../DividerComponent';
 
 interface AddressTableComponentProps {
   addressList: Address[];
@@ -23,7 +24,7 @@ export function AddressTableComponent(props: AddressTableComponentProps) {
             <>
               <AddressRowComponent address={item} />
               {index !== addressList.length - 1 ? (
-                <View style={styles.divider} />
+                <DividerComponent style={styles.divider} />
               ) : null}
             </>
           )}

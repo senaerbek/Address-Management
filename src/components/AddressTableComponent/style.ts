@@ -17,9 +17,6 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
   },
   divider: {
-    height: 1,
     marginHorizontal: 20,
-    marginVertical: 20,
-    backgroundColor: '#EEF0F4',
   },
 });

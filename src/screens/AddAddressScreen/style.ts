@@ -19,9 +19,4 @@ export const styles = StyleSheet.create({
   buttonContainer: {
     marginHorizontal: 20,
   },
-  divider: {
-    backgroundColor: '#EEF0F4',
-    height: 1,
-    marginVertical: 16,
-  },
 });

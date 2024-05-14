@@ -19,6 +19,7 @@ import {Address} from '../../models/address.ts';
 import * as Yup from 'yup';
 import {SuccessBottomModal} from '../../components/SuccessBottomModal';
 import {useNavigation} from '@react-navigation/native';
+import {DividerComponent} from '../../components/DividerComponent';
 
 export function AddAddressScreen() {
   const {t} = useLocalization();
@@ -122,7 +123,7 @@ export function AddAddressScreen() {
                 }
               />
             </ScrollView>
-            <View style={styles.divider} />
+            <DividerComponent />
             <ButtonComponent
               disabled={!dirty || isSubmitting}
               style={[
