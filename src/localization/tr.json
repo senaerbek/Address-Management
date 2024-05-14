@@ -12,7 +12,10 @@
       "ADDRESS_INPUT": "Adres Başlığı",
       "CITY_INPUT": "Şehir",
       "DETAIL_INPUT": "Adres Detayı",
-      "SAVE_BUTTON": "Kaydet"
+      "SAVE_BUTTON": "Kaydet",
+      "ADDRESS_INPUT_REQUIRED": "Adres başlığı zorunludur.",
+      "CITY_INPUT_REQUIRED": "Şehir zorunludur.",
+      "DETAIL_INPUT_REQUIRED": "Adres detayı zorunludur."
     }
   }
 }
