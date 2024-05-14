@@ -20,10 +20,11 @@ interface DropdownItem {
 interface DropdownComponentProps<T> extends DropdownProps<T> {
   label: string;
   onChange: (item: T) => void;
+  style?: any;
 }
 
 export function DropdownComponent<T>(props: DropdownComponentProps<T>) {
-  const {label, onChange, ...restOfProps} = props;
+  const {label, style, onChange, ...restOfProps} = props;
   const [value, setValue] = useState<DropdownItem | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
@@ -79,7 +80,7 @@ export function DropdownComponent<T>(props: DropdownComponentProps<T>) {
   });
 
   return (
-    <View>
+    <View style={style}>
       <Dropdown
         {...restOfProps}
         style={[styles.dropdown]}

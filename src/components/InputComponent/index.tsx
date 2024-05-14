@@ -10,10 +10,11 @@ import {styles} from './style.ts';
 
 interface TextInputComponentProps {
   label: string;
+  style?: any;
 }
 
 export function TextInputComponent(props: TextInputComponentProps) {
-  const {label, ...restOfProps} = props;
+  const {label, style, ...restOfProps} = props;
   const inputRef = useRef<TextInput>(null);
 
   const [isFocused, setIsFocused] = useState(false);
@@ -71,7 +72,7 @@ export function TextInputComponent(props: TextInputComponentProps) {
   });
 
   return (
-    <View>
+    <View style={style}>
       <TextInput
         style={styles.input}
         ref={inputRef}
