@@ -13,7 +13,6 @@ export const getAddresses = createAsyncThunk(
 export const addAddress = createAsyncThunk(
   'addresses/addAddress',
   async (address: Partial<Address>) => {
-    console.log(address);
     const response = await fetch(`${baseUrl}/addresses`, {
       method: 'POST',
       headers: {
@@ -21,7 +20,6 @@ export const addAddress = createAsyncThunk(
       },
       body: JSON.stringify(address),
     });
-    console.log(response);
     return await response.json();
   },
 );
