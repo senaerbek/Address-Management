@@ -11,6 +11,11 @@ const stackOptions = {
   headerShown: false,
 };
 
+export type StackParamList = {
+  Home: undefined;
+  AddAddress: undefined;
+};
+
 export const AppNavigator = memo(function ApplicationNavigator() {
   return (
     <View style={styles.container}>

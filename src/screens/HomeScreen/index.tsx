@@ -10,10 +10,12 @@ import {AddressTableComponent} from '../../components/AddressTableComponent';
 import {ButtonComponent} from '../../components/ButtonComponent';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {StackParamList} from '../../navigation/app-navigation.tsx';
 
 export function HomeScreen() {
   const dispatch = useDispatch<AppDispatch>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackNavigationProp<StackParamList>>();
   const {bottom} = useSafeAreaInsets();
   const {t} = useLocalization();
   const {addresses} = useSelector((state: RootState) => state.addresses);
@@ -36,9 +38,16 @@ export function HomeScreen() {
           </Text>
         }
       />
-      <View style={styles.body}>
+      <View
+        style={[
+          styles.body,
+          {
+            marginBottom: bottom,
+          },
+        ]}>
         <AddressTableComponent addressList={addresses} />
       </View>
+      <View style={styles.divider} />
       <View
         style={[
           styles.buttonContainer,
